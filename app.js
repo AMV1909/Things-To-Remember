@@ -19,3 +19,5 @@ app.use(express.json());
 
 // Routes
 app.use(indexRoutes);
+
+export {app};
