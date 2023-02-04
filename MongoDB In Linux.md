@@ -81,6 +81,16 @@ sudo systemctl status mongod
 
 ## 5. Log into the Database
 
+Check the database is OK and then exit
+
 ```
 mongo -u your_username -p --authenticationDatabase admin
+
+exit
+```
+
+## 6. Allow the port 27017 in the Firewall of Linux
+
+```
+ufw allow 27017
 ```
