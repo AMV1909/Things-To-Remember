@@ -4,29 +4,83 @@
 
 ## 1. Install MongoDB
 
-### 1.1 Import the public key used by the package management system.
-
 ```
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-```
-
-### 1.2 Create a list file for MongoDB.
-
-```
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-```
-
-### 1.3 Reload local package database.
-
-```
 sudo apt-get update
-```
-
-### 1.4 Install the MongoDB packages.
-
-```
 sudo apt-get install -y mongodb-org
 ```
 
-### 2. Run MongoDB Community Edition
+## 2. Run MongoDB Community Edition
 
+```
+sudo systemctl start mongod
+sudo systemctl status mongod
+mongosh
+```
+
+## 3. Create a password for the Database
+
+```
+use admin
+db.createUser(
+	{
+		user: "admin",
+		pwd: "DevLog",
+		roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ],
+		passwordDigestor: "server"
+	}
+)
+```
+
+## 4. Enable Config
+
+```
+sudo nano /etc/mongod.conf
+```
+
+Scroll down to find the commented-out net section:
+
+```
+net:
+ port: 27017
+ bindIp: 127.0.0.1
+```
+
+Change the net section like this:
+
+```
+net:
+ port: 27017
+ bindIp: 127.0.0.1,your_IP_address
+```
+
+Scroll down to find the commented-out security section:
+
+```
+#security:
+
+#operationProfiling:
+```
+
+Change the security section like this:
+
+```
+security:
+  authorization: enabled
+
+#operationProfiling:
+```
+
+Save the file and restart the service
+
+```
+sudo systemctl restart mongod
+sudo systemctl status mongod
+```
+
+## 5. Log into the Database
+
+```
+mongo -u your_username -p --authenticationDatabase admin
+```
