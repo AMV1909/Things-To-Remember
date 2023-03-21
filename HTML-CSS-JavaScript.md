@@ -6,9 +6,10 @@
 
 ## CSS
 
-* boxicons.com
-* animate.css
-* svbackgrounds.com (Backgrounds personalizados)
+-   boxicons.com
+-   animate.css
+-   svbackgrounds.com (Personalized Backgrounds)
+-   angrytools.com/gradient (Gradient Backgrounds)
 
 ## JavaScript
 
@@ -16,4 +17,4 @@
 
 ## Java
 
-* lombok (Crear getters, setters y constructores sólo)
+-   lombok (Create getters, setters and constructores)
