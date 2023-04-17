@@ -23,8 +23,6 @@ Create a folder for your project in the Virtual Machine. I'm gonna be using the 
 ```
 mkdir my-project
 cd my-project
-mkdir Frontend
-cd Frontend
 ```
 
 ## 4. Create a workflow for Github Actions
