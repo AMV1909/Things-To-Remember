@@ -179,7 +179,7 @@ server {
 }
 ```
 
-Change the root folder to the route of the `dist` folder. The file should look like this:
+Change the root folder to the route of the `dist` folder and the location section for `/index.html`. The file should look like this:
 
 ```
 server {
@@ -193,7 +193,7 @@ server {
     server_name _;
 
     location / {
-        try_files $uri $uri/ =404;
+        try_files $uri $uri/ /index.html;
     }
 }
 ```
